@@ -2,6 +2,7 @@ import { Button, Form, Container, Row, Col } from 'react-bootstrap'
 import { React, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Axios from 'axios'
+import dayjs from 'dayjs'
 
 // Signup Api
 const url = 'http://localhost:3005/api/member/signup'
@@ -10,12 +11,12 @@ const Signup = () => {
   const [memberName, setMemberName] = useState('')
   const [memberEmail, setMemberEmail] = useState('')
   const [memberPassword, setMemberPassword] = useState('')
-
   const handleSignup = (e) => {
     Axios.post(url, {
       memberName,
       memberEmail,
-      memberPassword
+      memberPassword,
+      create_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
     }).then((response) => {
       const data = response.data
       console.log(data)
