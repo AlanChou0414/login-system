@@ -10,14 +10,15 @@ const Login = () => {
   const [memberEmail, setMemberEmail] = useState('')
   const [memberPassword, setMemberPassword] = useState('')
 
-  const handleCheckUser = (e) => {
+  const handleCheckUserButton = (e) => {
+    if (memberEmail === '' || memberPassword === '') return
     Axios.post(url, {
       memberEmail,
       memberPassword
     }).then((response) => {
       const data = response.data
       if (data.message) {
-        alert(`${data.message}`)
+        alert(data.message)
       } else {
         alert(`Welcome user : ${data[0].name}`)
         location.href = '/#/list'
@@ -64,8 +65,8 @@ const Login = () => {
             <div className='text-center'>
               <Button
                 variant="outline-dark"
-                type="button"
-                onClick={handleCheckUser}>
+                type="submit"
+                onClick={handleCheckUserButton}>
                 Submit
               </Button>
               <Link

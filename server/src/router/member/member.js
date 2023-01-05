@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const express = require('express')
 const db = require('../../modules/connect-sql')
 
@@ -6,7 +7,7 @@ const router = express.Router()
 // Member List
 // http://localhost:3005/api/member/list
 router.get('/list', (req, res, next) => {
-  const sql = 'SELECT * FROM `member_information`'
+  const sql = 'SELECT * FROM `member_information` ORDER BY id ASC'
   db.query(sql, (err, result) => {
     if (err) throw err
     res.json(result)
@@ -61,5 +62,29 @@ router.post('/signup', (req, res, next) => {
     }
   })
 })
+
+// Delete
+// http://localhost:3005/api/member/delete
+router.delete('/delete', (req, res, next) => {
+  const sql = 'DELETE FROM member_information WHERE id = ?'
+  const { id } = req.query
+  db.query(sql, [id], (err, result) => {
+    if (err) throw err
+    if (result) {
+      res.send({
+        id,
+        state: true,
+        message: 'Successful!'
+      })
+    } else {
+      res.send({
+        state: false,
+        message: 'Error!'
+      })
+    }
+  })
+})
+
+// Updata
 
 module.exports = router
