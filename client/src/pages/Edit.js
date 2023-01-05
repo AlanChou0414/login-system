@@ -1,18 +1,19 @@
 import { Button, Form, Container, Row, Col } from 'react-bootstrap'
 import { React, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Axios from 'axios'
 import dayjs from 'dayjs'
 
 // Signup Api
 const url = 'http://localhost:3005/api/member/signup'
 
-const Signup = () => {
+const Edit = () => {
+  const { id } = useParams()
+  console.log(id)
   const [memberName, setMemberName] = useState('')
   const [memberEmail, setMemberEmail] = useState('')
   const [memberPassword, setMemberPassword] = useState('')
-
-  const handleSignupButton = (e) => {
+  const handleEditButton = (e) => {
     if (memberEmail === '' || memberPassword === '' || memberName === '') return
     Axios.post(url, {
       memberName,
@@ -39,7 +40,7 @@ const Signup = () => {
     <Container>
       <Row className="justify-content-md-center mt-5">
         <Col xs lg="3">
-          <h1 className='text-center'>Sign Up</h1>
+          <h1 className='text-center'>Edit</h1>
           <Form method='post'>
             <Form.Group className="mb-3" controlId="formBasicName">
               <Form.Label>User Name</Form.Label>
@@ -83,14 +84,14 @@ const Signup = () => {
               <Button
                 variant="outline-dark"
                 type="submit"
-                onClick={handleSignupButton}
+                onClick={handleEditButton}
               >
                 Submit
               </Button>
               <Link
                 className='btn btn-outline-danger m-3'
                 role="button"
-                to='/'>
+                to='/list'>
                 Backto
               </Link>
             </div>
@@ -101,4 +102,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default Edit

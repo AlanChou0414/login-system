@@ -8,6 +8,7 @@ import { HashRouter, Route, Routes, Link, BrowserRouter } from 'react-router-dom
 import List from './pages/List'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import Edit from './pages/Edit'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
                 <Route path="/" element={<Login />} />
                 <Route path="signup" element={<Signup />} />
                 <Route path="list" element={<List />} />
+                <Route path="edit" element={<Edit />} />
             </Routes>
         </HashRouter>
   )
