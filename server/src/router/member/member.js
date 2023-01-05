@@ -33,8 +33,8 @@ router.post('/login', (req, res, next) => {
 // Signup
 // http://localhost:3005/api/member/signup
 router.post('/signup', (req, res, next) => {
-  const { memberName, memberEmail, memberPassword } = req.body
-  const sql = 'INSERT INTO `member_information` (name,email,password) VALUES (?,?,?)'
+  const { memberName, memberEmail, memberPassword, create_at } = req.body
+  const sql = 'INSERT INTO `member_information` (name,email,password,create_at) VALUES (?,?,?,?)'
   const checkSql = 'SELECT * FROM member_information WHERE email = ?'
   db.query(checkSql, [memberEmail], (err, result) => {
     if (err) throw err
@@ -44,7 +44,7 @@ router.post('/signup', (req, res, next) => {
         message: 'This email can\'t signup'
       })
     } else {
-      db.query(sql, [memberName, memberEmail, memberPassword], (err, result) => {
+      db.query(sql, [memberName, memberEmail, memberPassword, create_at], (err, result) => {
         if (err) throw err
         if (result) {
           res.send({
