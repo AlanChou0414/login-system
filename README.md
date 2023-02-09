@@ -9,7 +9,7 @@ The app use node.js to create CRUD in react and express framework <br>
 <img src="https://user-images.githubusercontent.com/99056343/217713459-db780aca-3a33-4f87-8eb2-ba9ce8651c9a.png" align='center' width='400px' height='400px'>
 <img src="https://user-images.githubusercontent.com/99056343/217713482-6bf87850-4d9a-4cc7-9612-ed2a0f1cb1ed.png" align='center' width='400px' height='400px'>
 <img src="https://user-images.githubusercontent.com/99056343/217713676-fac8b63f-f3be-4c0a-abc8-a51b540b0a5e.png" align='center' width='800px' height='400px'>
-<img src="https://user-images.githubusercontent.com/99056343/217714594-e14bbb21-6e6c-4385-8cac-5072c6ee24cf.gif" align='center' width='800px' height='400px'>
+<img src="https://user-images.githubusercontent.com/99056343/217714594-e14bbb21-6e6c-4385-8cac-5072c6ee24cf.gif" align='center' width='800px' height='500px'>
 
 ### 🔨 Built With
 
